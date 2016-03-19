@@ -4,6 +4,7 @@ jade = require 'gulp-jade'
 plumber = require 'gulp-plumber'
 notify = require 'gulp-notify'
 path = require 'path'
+es = require 'event-stream'
 _ = require 'lodash'
 
 module.exports = (settings) ->
@@ -22,9 +23,9 @@ module.exports = (settings) ->
       .pipe gulp.dest dest
 
   gulp.task 'build:jade', ->
-    tasks = _.map settings.jade, (dest, src) ->
+    es.merge _.map settings.jade, (dest, src) ->
       pipeToJade gulp.src(src), dest
 
-  gulp.task 'watch:jade', ['build:jade'], ->
-    tasks = _.map settings.jade, (dest, src) ->
-      pipeToJade watch(src, verbose: true, name: 'jade'), dest
+  gulp.task 'watch:jade', ['build'], ->
+    es.merge _.map settings.jade, (dest, src) ->
+      pipeToJade watch(src, verbose: true, name: 'Jade'), dest

@@ -1,0 +1,31 @@
+{
+  "name": "yagf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agufranov/yagf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agufranov/yagf/issues"
+  },
+  "homepage": "https://github.com/agufranov/yagf#readme",
+  "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "lodash": "^4.6.1"
+  }
+}

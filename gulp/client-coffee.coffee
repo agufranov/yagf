@@ -14,18 +14,19 @@ es = require 'event-stream'
 _ = require 'lodash'
 
 module.exports = (settings) ->
-  watchify.args.verbose = true
   onError = (err) ->
-    # filename = path.relative process.cwd(), err.filename
-    # at = err.location.first_line + 1
-    # notify.onError(
-    #   title: "#{err.name} [#{err.message}]"
-    #   message: "#{filename}:#{at}"
-    # )(err)
-    notify.onError({ title: 'Title', message: 'Message' })(err)
-  onError = notify.onError()
+    if err.filename isnt undefined
+      filename = path.relative process.cwd(), err.filename
+      reason = err.message.replace ": #{err.filename}", ""
+      message = "#{filename}:#{err.line} [#{reason}]"
+    else
+      message = err.message
+    notify.onError(
+      title: "CoffeeScript error"
+      message: message
+    )(err)
 
-  m = (dest, src, isWatch, debug) ->
+  bundleFn = (dest, src, isWatch, debug) ->
     args =
       entries: [src]
       extensions: ['.coffee']
@@ -53,18 +54,14 @@ module.exports = (settings) ->
           console.log "Browserify finished in #{t2 - t1} ms"
 
     if isWatch
-      doBundle()
       b.on 'update', doBundle
-      # gulp.watch src, (file) ->
-      #   console.log "watchify watch: #{file.relative} changed"
-      watch src, verbose: true, name: 'watchify watch'
-    else
-      doBundle()
+
+    doBundle()
 
   gulp.task 'build:client-coffee', ->
     es.merge _.map settings.client_coffee, (dest, src) ->
-      m dest, src, false, true
+      bundleFn dest, src, false, true
 
   gulp.task 'watch:client-coffee', ->
     es.merge _.map settings.client_coffee, (dest, src) ->
-      m dest, src, true, true
+      bundleFn dest, src, true, true

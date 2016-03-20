@@ -1,8 +1,8 @@
 Client CoffeeScript:
 - check speed for large files
 - watchify streams are ending immediately
-- handle errors with notify
-  - now build hangs when error
+[DONE] - handle errors with notify
+  [DONE] - now build hangs when error
 - debugger is not working
   - now it works (why?), but strange error in browser: '<sourcemap fragment> is not defined'
 

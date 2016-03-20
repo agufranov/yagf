@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/agufranov/yagf#readme",
   "devDependencies": {
+    "browserify": "^13.0.0",
     "coffee-script": "^1.10.0",
+    "coffeeify": "^2.0.1",
     "del": "^2.2.0",
     "event-stream": "^3.3.2",
     "gulp": "^3.9.1",
@@ -28,7 +30,12 @@
     "gulp-live-server": "0.0.29",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
-    "lodash": "^4.6.1"
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "lodash": "^4.6.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
   },
   "dependencies": {
     "express": "^4.13.4"

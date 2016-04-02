@@ -62,6 +62,6 @@ module.exports = (settings) ->
     es.merge _.map settings.client_coffee, (dest, src) ->
       bundleFn dest, src, false, true
 
-  gulp.task 'watch:client-coffee', ->
+  gulp.task 'watch:client-coffee', ['build:client-coffee'], ->
     es.merge _.map settings.client_coffee, (dest, src) ->
       bundleFn dest, src, true, true

@@ -5,5 +5,6 @@ Client CoffeeScript:
   [DONE] - now build hangs when error
 - debugger is not working
   - now it works (why?), but strange error in browser: '<sourcemap fragment> is not defined'
+[DONE] watch:smth must start after build:smth, not after build
 
 Livereload after initial build

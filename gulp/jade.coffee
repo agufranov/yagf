@@ -26,6 +26,6 @@ module.exports = (settings) ->
     es.merge _.map settings.jade, (dest, src) ->
       pipeToJade gulp.src(src), dest
 
-  gulp.task 'watch:jade', ['build'], ->
+  gulp.task 'watch:jade', ['build:jade'], ->
     es.merge _.map settings.jade, (dest, src) ->
       pipeToJade watch(src, verbose: true, name: 'Jade'), dest
